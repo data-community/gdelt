@@ -107,7 +107,7 @@ def pre_set_subdag(parent_dag_name, child_dag_name):
     remote_spark_submit = SSHOperator(
         ssh_conn_id='spark.dc.ssh',
         task_id='remote_spark_submit',
-        command="""/root/.sdkman/candidates/spark/current/bin/spark-submit \
+        command="""/spark/bin/spark-submit \
                     --packages org.apache.spark:spark-sql-kafka-0-10_2.11:2.4.4,org.elasticsearch:elasticsearch-spark-20_2.11:7.6.0 \
                     --master spark://spark.dc:7077 \
                     file:///spark/processing/process_message_from_kafka_to_es.py kafka es

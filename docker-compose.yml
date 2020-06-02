@@ -95,12 +95,13 @@ services:
       retries: 3
 
   spark-standalone:
-    image: 5200710/spark:2.4.4-standalone
+    image: 5200710/spark:spark-standalone-2.4.5
     hostname: spark.dc
     ports:
       - 8080:8080
       - 8081:8081
       - 7077:7077
     volumes:
-      - .ssh:/root/.ssh
+      - .ssh/id_rsa:/root/.ssh/id_rsa
+      - .ssh/id_rsa.pub:/root/.ssh/id_rsa.pub
       - ./processing:/spark/processing
